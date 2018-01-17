@@ -1,0 +1,14 @@
+PackratFormat: 1.4
+PackratVersion: 0.4.8.1
+RVersion: 3.4.2
+Repos: RSPM=http://cluster.rstudiopm.com/cranifest/latest
+
+Package: packrat
+Source: RSPM
+Version: 0.4.8-1
+Hash: 6ad605ba7b4b476d84be6632393f5765
+
+Package: rlang
+Source: RSPM
+Version: 0.1.6
+Hash: 8eb4b2dce38b8f663cb9364b28eaa76b
