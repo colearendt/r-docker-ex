@@ -5,15 +5,12 @@ RUN R -e 'install.packages("packrat", repos="http://cran.rstudio.com", dependenc
 
 USER rstudio
 
-WORKDIR /home/rstudio/project
-
 # copy lock file & install deps
-COPY --chown=rstudio:rstudio packrat/packrat.* packrat/
-RUN R -e 'packrat::restore();'
+COPY --chown=rstudio:rstudio packrat/packrat.* /home/rstudio/project/packrat/
+RUN R -e 'packrat::restore(project="/home/rstudio/project");'
 
 # copy the rest of the directory
-COPY --chown=rstudio:rstudio . .
+# .dockerignore can ignore some files/folders if desirable
+COPY --chown=rstudio:rstudio . /home/rstudio/project
 
 USER root
-
-RUN chown rstudio.rstudio /home/rstudio/project
